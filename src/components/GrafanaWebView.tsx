@@ -1,4 +1,3 @@
-
 import { useState } from 'react';
 import { Card } from '@/components/ui/card';
 import { AlertTriangle, Activity, TrendingUp, Shield } from 'lucide-react';
@@ -6,8 +5,8 @@ import { AlertTriangle, Activity, TrendingUp, Shield } from 'lucide-react';
 const GrafanaWebView = () => {
   const [isGrafanaError, setIsGrafanaError] = useState(true); // 실제 Grafana가 없으므로 에러 상태로 시작
 
-  // 실제 Grafana URL이 설정되면 이 부분을 수정
-  const grafanaUrl = process.env.REACT_APP_GRAFANA_URL || '';
+  // Vite에서는 import.meta.env를 사용하고 VITE_ 접두사 필요
+  const grafanaUrl = import.meta.env.VITE_GRAFANA_URL || '';
 
   if (!grafanaUrl || isGrafanaError) {
     // Grafana 연결 실패 시 모킹 대시보드 표시
