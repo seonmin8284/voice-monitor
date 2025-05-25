@@ -78,7 +78,7 @@ const GrafanaWebView = () => {
                 <div className="text-2xl font-bold text-purple-400">A+</div>
               </div>
             </div>
-          </div>
+          </Card>
         </div>
 
         {/* 실시간 로그 */}
