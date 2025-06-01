@@ -6,12 +6,7 @@ const GrafanaWebView = () => {
   const [isGrafanaError, setIsGrafanaError] = useState(false);
 
   // 실제 대시보드 URL로 수정
-<<<<<<< HEAD
-  const grafanaUrl =
-    "http://localhost:3000/d/aenmezug634lcf/fastapi-2b-fraud-ai-monitoring?orgId=1&from=now-5m&to=now&timezone=browser&kiosk";
-=======
   const grafanaUrl = "http://localhost:3000";
->>>>>>> 6317d83 (readme.md 작성)
 
   if (!grafanaUrl || isGrafanaError) {
     // Grafana 연결 실패 시 모킹 대시보드 표시
