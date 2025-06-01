@@ -6,7 +6,8 @@ const GrafanaWebView = () => {
   const [isGrafanaError, setIsGrafanaError] = useState(false);
 
   // 실제 대시보드 URL로 수정
-  const grafanaUrl = "http://localhost:3000";
+  const grafanaUrl =
+    "http://localhost:3000/d/aenmezug634lcf/fastapi-2b-fraud-ai-monitoring?orgId=1&from=now-5m&to=now&timezone=browser&kiosk";
 
   if (!grafanaUrl || isGrafanaError) {
     // Grafana 연결 실패 시 모킹 대시보드 표시
@@ -148,6 +149,9 @@ const GrafanaWebView = () => {
         title="Grafana Dashboard"
         onError={() => setIsGrafanaError(true)}
         allowFullScreen
+        sandbox="allow-same-origin allow-scripts allow-popups allow-forms"
+        referrerPolicy="no-referrer"
+        loading="lazy"
       />
     </div>
   );
