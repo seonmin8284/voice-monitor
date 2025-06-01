@@ -6,8 +6,7 @@ const GrafanaWebView = () => {
   const [isGrafanaError, setIsGrafanaError] = useState(false);
 
   // 실제 대시보드 URL로 수정
-  const grafanaUrl =
-    "http://localhost:3000/d/default/이상거래-탐지-모니터링?orgId=1&refresh=5s&kiosk";
+  const grafanaUrl = "http://localhost:3000";
 
   if (!grafanaUrl || isGrafanaError) {
     // Grafana 연결 실패 시 모킹 대시보드 표시
