@@ -1,12 +1,13 @@
-import { useState } from 'react';
-import { Card } from '@/components/ui/card';
-import { AlertTriangle, Activity, TrendingUp, Shield } from 'lucide-react';
+import { useState } from "react";
+import { Card } from "@/components/ui/card";
+import { AlertTriangle, Activity, TrendingUp, Shield } from "lucide-react";
 
 const GrafanaWebView = () => {
-  const [isGrafanaError, setIsGrafanaError] = useState(true); // 실제 Grafana가 없으므로 에러 상태로 시작
+  const [isGrafanaError, setIsGrafanaError] = useState(false);
 
-  // Vite에서는 import.meta.env를 사용하고 VITE_ 접두사 필요
-  const grafanaUrl = import.meta.env.VITE_GRAFANA_URL || '';
+  // 실제 대시보드 URL로 수정
+  const grafanaUrl =
+    "http://localhost:3000/d/aenmezug634lcf/fastapi-2b-fraud-ai-monitoring?orgId=1&from=now-5m&to=now&timezone=browser&kiosk";
 
   if (!grafanaUrl || isGrafanaError) {
     // Grafana 연결 실패 시 모킹 대시보드 표시
@@ -29,7 +30,9 @@ const GrafanaWebView = () => {
           <div className="flex items-center gap-3">
             <AlertTriangle className="w-5 h-5 text-yellow-400" />
             <div>
-              <div className="text-yellow-400 font-medium">Grafana 연결 대기 중</div>
+              <div className="text-yellow-400 font-medium">
+                Grafana 연결 대기 중
+              </div>
               <div className="text-sm text-slate-300">
                 실제 Grafana 대시보드 연결 전까지 모킹 데이터가 표시됩니다.
               </div>
@@ -89,27 +92,37 @@ const GrafanaWebView = () => {
             <div className="flex items-center gap-2 text-sm">
               <div className="w-2 h-2 bg-green-500 rounded-full"></div>
               <span className="text-slate-400">15:32:45</span>
-              <span className="text-white">정상 거래 - 김민수 → 이영희 (50,000원)</span>
+              <span className="text-white">
+                정상 거래 - 김민수 → 이영희 (50,000원)
+              </span>
             </div>
             <div className="flex items-center gap-2 text-sm">
               <div className="w-2 h-2 bg-green-500 rounded-full"></div>
               <span className="text-slate-400">15:31:23</span>
-              <span className="text-white">정상 거래 - 박철수 → 최영미 (120,000원)</span>
+              <span className="text-white">
+                정상 거래 - 박철수 → 최영미 (120,000원)
+              </span>
             </div>
             <div className="flex items-center gap-2 text-sm">
               <div className="w-2 h-2 bg-red-500 rounded-full animate-pulse"></div>
               <span className="text-slate-400">15:29:11</span>
-              <span className="text-red-400">⚠️ 이상 거래 탐지 - 의심스러운 패턴</span>
+              <span className="text-red-400">
+                ⚠️ 이상 거래 탐지 - 의심스러운 패턴
+              </span>
             </div>
             <div className="flex items-center gap-2 text-sm">
               <div className="w-2 h-2 bg-green-500 rounded-full"></div>
               <span className="text-slate-400">15:28:55</span>
-              <span className="text-white">정상 거래 - 정대영 → 홍길동 (75,000원)</span>
+              <span className="text-white">
+                정상 거래 - 정대영 → 홍길동 (75,000원)
+              </span>
             </div>
             <div className="flex items-center gap-2 text-sm">
               <div className="w-2 h-2 bg-green-500 rounded-full"></div>
               <span className="text-slate-400">15:27:33</span>
-              <span className="text-white">정상 거래 - 김영수 → 이민정 (200,000원)</span>
+              <span className="text-white">
+                정상 거래 - 김영수 → 이민정 (200,000원)
+              </span>
             </div>
           </div>
         </Card>
@@ -117,8 +130,10 @@ const GrafanaWebView = () => {
         {/* 연결 설정 안내 */}
         <div className="mt-4 text-center">
           <p className="text-sm text-slate-400">
-            실제 Grafana 대시보드를 연결하려면 환경변수 
-            <code className="bg-slate-800 px-2 py-1 rounded mx-1">REACT_APP_GRAFANA_URL</code>
+            실제 Grafana 대시보드를 연결하려면 환경변수
+            <code className="bg-slate-800 px-2 py-1 rounded mx-1">
+              REACT_APP_GRAFANA_URL
+            </code>
             을 설정하세요.
           </p>
         </div>
@@ -133,6 +148,7 @@ const GrafanaWebView = () => {
         className="w-full h-full border-0"
         title="Grafana Dashboard"
         onError={() => setIsGrafanaError(true)}
+        allowFullScreen
       />
     </div>
   );
