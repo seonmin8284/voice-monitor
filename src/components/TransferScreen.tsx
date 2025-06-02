@@ -32,8 +32,12 @@ interface WebkitSpeechRecognition extends EventTarget {
   stop: () => void;
 }
 
-interface Window {
-  webkitSpeechRecognition: new () => WebkitSpeechRecognition;
+declare global {
+  interface Window {
+    webkitSpeechRecognition: {
+      new (): WebkitSpeechRecognition;
+    };
+  }
 }
 
 interface User {
@@ -125,20 +129,23 @@ const TransferScreen = ({ user }: TransferScreenProps) => {
     amount: number;
   }) => {
     try {
-      const response = await fetch("http://localhost:8000/predict/", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          transaction_id: Date.now(),
-          amount: transferData.amount,
-          card_type: "visa",
-          timestamp: Math.floor(Date.now() / 1000),
-          receiver: transferData.receiver,
-          sender: user.name,
-        }),
-      });
+      const response = await fetch(
+        "https://fastapi-production-93ec.up.railway.app/predict/",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            transaction_id: Date.now(),
+            amount: transferData.amount,
+            card_type: "visa",
+            timestamp: Math.floor(Date.now() / 1000),
+            receiver: transferData.receiver,
+            sender: user.name,
+          }),
+        }
+      );
 
       if (!response.ok) {
         throw new Error("Transaction failed");
