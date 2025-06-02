@@ -6,7 +6,7 @@ const GrafanaWebView = () => {
   const [isGrafanaError, setIsGrafanaError] = useState(false);
 
   // 실제 대시보드 URL로 수정
-  const grafanaUrl = "https://fastapi-production-93ec.up.railway.app/";
+  const grafanaUrl = "https://fastapigrafana-production.up.railway.app/";
 
   if (!grafanaUrl || isGrafanaError) {
     // Grafana 연결 실패 시 모킹 대시보드 표시
